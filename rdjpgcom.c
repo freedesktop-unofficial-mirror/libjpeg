@@ -14,6 +14,7 @@
 #define JPEG_CJPEG_DJPEG	/* to get the command-line config symbols */
 #include "jinclude.h"		/* get auto-config symbols, <stdio.h> */
 
+#include <locale.h>             /*ballombe@debian.org: use locale for isprint*/
 #include <ctype.h>		/* to declare isupper(), tolower() */
 #ifdef USE_SETMODE
 #include <fcntl.h>		/* to declare setmode()'s parameter macros */
@@ -223,7 +224,10 @@ process_COM (void)
   unsigned int length;
   int ch;
   int lastch = 0;
-
+/* ballombe@debian.org Thu, 15 Nov 2001 20:04:47 +0100*/
+/* Set locale properly for isprint*/
+  setlocale(LC_CTYPE,"");
+    
   /* Get the marker parameter length count */
   length = read_2_bytes();
   /* Length includes itself, so must be at least 2 */
@@ -254,6 +258,8 @@ process_COM (void)
     length--;
   }
   printf("\n");
+/*ballombe@debian.org: revert to C locale*/
+  setlocale(LC_CTYPE,"C");
 }
 
 
