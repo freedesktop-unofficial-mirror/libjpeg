@@ -1,4 +1,10 @@
 #! /bin/sh
+# autotools-dev hack (<ballombe@debian.org>, Wed, 14 Nov 2001 10:13:10 +0100)
+if [ -x /usr/share/misc/config.sub ]; then
+   /usr/share/misc/config.sub $*
+   exit $?
+fi
+
 # Configuration validation subroutine script, version 1.1.
 #   Copyright (C) 1991, 92, 93, 94, 95, 96, 1997 Free Software Foundation, Inc.
 # This file is (in principle) common to ALL GNU software.

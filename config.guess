@@ -1,4 +1,10 @@
 #! /bin/sh
+# autotools-dev hack (<ballombe@debian.org>, Wed, 14 Nov 2001 10:13:10 +0100)
+if [ -x /usr/share/misc/config.guess ]; then
+   /usr/share/misc/config.guess $*
+   exit $?
+fi
+
 # Attempt to guess a canonical system name.
 #   Copyright (C) 1992, 93, 94, 95, 96, 1997 Free Software Foundation, Inc.
 #
