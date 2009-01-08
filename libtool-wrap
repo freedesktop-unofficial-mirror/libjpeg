@@ -1,0 +1,18 @@
+#!/bin/bash
+
+export PATH=${PATH}:/usr/bin
+
+doit=
+for x in glibtool libtool ; do
+	if type -p ${x} > /dev/null ; then
+		doit=${x}
+		break
+	fi
+done
+
+if [ -z "${doit}" ] ; then
+	echo "Unable to locate libtool :("
+	exit 1
+fi
+
+exec ${doit} "$@"
