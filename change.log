@@ -1,6 +1,26 @@
 CHANGE LOG for Independent JPEG Group's JPEG software
 
 
+Version 6c  10-Jan-2009
+-----------------------
+
+This release is based on the patchsets used by Debian, Gentoo, Fedora and
+Ubuntu.
+
+The buildsystem is adapted to more recent versions and uses more standard
+concepts (e.g. @bindir@ is now used).
+
+Cropping was added from http://sylvana.net/jpegcrop/
+
+The installed header is now C++ safe.
+
+Fix byte order issue with 16bit PPM/PGM files
+
+Make libjpeg work nicely with BSD systems
+
+Adds extra tools exifautotran and jpegexiforient
+
+
 Version 6b  27-Mar-1998
 -----------------------
 
