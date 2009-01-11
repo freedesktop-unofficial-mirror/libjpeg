@@ -446,12 +446,12 @@ main (int argc, char **argv)
     } else if (keymatch(arg, "comment", 1)) {
       if (++argn >= argc) usage();
       comment_arg = argv[argn];
-#if 0
-#error "There is a buffer overflow in the code below"
       /* If the comment text starts with '"', then we are probably running
        * under MS-DOG and must parse out the quoted string ourselves.  Sigh.
        */
       if (comment_arg[0] == '"') {
+	if (strlen(argv[argn]) >= MAX_COM_LENGTH)
+	  ERREXIT("Comment to long");
 	comment_arg = (char *) malloc((size_t) MAX_COM_LENGTH);
 	if (comment_arg == NULL)
 	  ERREXIT("Insufficient memory");
@@ -468,7 +468,6 @@ main (int argc, char **argv)
 	  strcat(comment_arg, argv[argn]);
 	}
       }
-#endif
       comment_length = (unsigned int) strlen(comment_arg);
     } else
       usage();
